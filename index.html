@@ -1,0 +1,73 @@
+<!DOCTYPE html> <html lang=es ng-app=app> <head> <meta http-equiv=X-UA-Compatible> <meta charset=utf-8> <title>Dahsboard</title> <meta name=description content=""> <meta name=viewport content="width=device-width"> <link rel="shortcut icon" href=/6df2b309.favicon.ico> <!-- Place favicon.ico and apple-touch-icon.png in the root directory --> <link rel=stylesheet href=styles/5ab616f5.vendor.css> <link rel=stylesheet href=styles/73904ab9.main.css>  <body> <!--[if lt IE 10]>
+      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]--> <div ng-include src="'partials/header.html'"></div> <div class=container-fluid> <div ng-include src="'partials/side-menu.html'"></div> <div ng-include src="'partials/main-panel.html'"></div> <div ng-include src="'partials/graficos.html'"></div> <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main"> <h2 class=sub-header>Gráficos</h2> <canvas id=buyers width=600 height=400></canvas> <!-- pie chart canvas element --> <canvas id=countries width=600 height=400></canvas> <!-- bar chart canvas element --> <canvas id=income width=600 height=400></canvas> </div> </div> <div class=footer> <p><span class="glyphicon glyphicon-heart"></span> from the Yeoman team</p> </div>  <!-- Modal --> <div class="modal fade" id=myModal tabindex=-1 role=dialog aria-labelledby=myModalLabel aria-hidden=true> <div class=modal-dialog> <div class=modal-content> <div class=modal-header> <button type=button class=close data-dismiss=modal aria-label=Close><span aria-hidden=true>&times;</span></button> <h4 class=modal-title id=myModalLabel>Formulario de los datos de su empresa</h4> </div> <div class=modal-body> ... </div> <div class=modal-footer> <button type=button class="btn btn-default" data-dismiss=modal>Cerrar</button> <button type=button class="btn btn-primary">Guardar Cambios</button> </div> </div> </div> </div> <script>// line chart data
+            var buyerData = {
+                labels : ["January","February","March","April","May","June"],
+                datasets : [
+                {
+                    fillColor : "rgba(172,194,132,0.4)",
+                    strokeColor : "#ACC26D",
+                    pointColor : "#fff",
+                    pointStrokeColor : "#9DB86D",
+                    data : [203,156,99,251,305,247]
+                }
+            ]
+            }
+            // get line chart canvas
+            var buyers = document.getElementById('buyers').getContext('2d');
+            // draw line chart
+            new Chart(buyers).Line(buyerData);
+            // pie chart data
+            var pieData = [
+                {
+                    value: 30,
+                    color:"#878BB6"
+                },
+                {
+                    value : 30,
+                    color : "#4ACAB4"
+                },
+                {
+                    value : 10,
+                    color : "#FF8153"
+                },
+                {
+                    value : 30,
+                    color : "#FFEA88"
+                }
+            ];
+            // pie chart options
+            var pieOptions = {
+                 segmentShowStroke : false,
+                 animateScale : true
+            }
+            // get pie chart canvas
+            var countries= document.getElementById("countries").getContext("2d");
+            // draw pie chart
+            new Chart(countries).Pie(pieData, pieOptions);
+            // bar chart data
+            var barData = {
+                labels : ["January","February","March","April","May","June"],
+                datasets : [
+                    {
+                        fillColor : "#48A497",
+                        strokeColor : "#48A4D1",
+                        data : [456,479,324,569,702,600]
+                    },
+                    {
+                        fillColor : "rgba(73,188,170,0.4)",
+                        strokeColor : "rgba(72,174,209,0.4)",
+                        data : [364,504,605,400,345,320]
+                    }
+                ]
+            }
+            // get bar chart canvas
+            var income = document.getElementById("income").getContext("2d");
+            // draw bar chart
+            new Chart(income).Bar(barData);</script> <script src=scripts/144ccf44.vendor.js></script> <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. --> <script>(function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
+      function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
+      e=o.createElement(i);r=o.getElementsByTagName(i)[0];
+      e.src='//www.google-analytics.com/analytics.js';
+      r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
+      ga('create','UA-XXXXX-X');ga('send','pageview');</script> <script src=scripts/cb7562c6.plugins.js></script> <script src=scripts/87c98abb.main.js></script> <script>var buyers = document.getElementsById('buyers').getContext('2d');
+            new Chart(buyers).Line(buyerData);</script>  
